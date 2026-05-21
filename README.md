@@ -1,6 +1,5 @@
 <img width="1831" height="937" alt="image" src="https://github.com/user-attachments/assets/1c410451-b7d3-4dad-8ab1-3033d8b62195" />
 
-![Uploading image.png…]()
 
                             MediConnect Punjab(FIND THE DOC)
 
