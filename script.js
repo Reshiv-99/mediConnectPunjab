@@ -150,7 +150,7 @@ function fetchNearby(lat, lng) {
 
   status.textContent = "🔍 Searching for " + specialty + "s nearby…";
 
-  var url = "https://overpass-api.de/api/interpreter?data=[out:json];(node[\"amenity\"=\"" + specialty + "\"](around:" + radiusM + "," + lat + "," + lng + ");way[\"amenity\"=\"" + specialty + "\"](around:" + radiusM + "," + lat + "," + lng + "););out center;";
+  var url = "https://overpass.kumi.systems/api/interpreter?data=[out:json];(node[\"amenity\"=\"" + specialty + "\"](around:" + radiusM + "," + lat + "," + lng + ");way[\"amenity\"=\"" + specialty + "\"](around:" + radiusM + "," + lat + "," + lng + "););out center;";
 
   fetch(url)
     .then(function(r){ return r.json(); })
