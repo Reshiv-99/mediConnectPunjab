@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindtheDoc</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- CURSOR BLUR -->
+<div id="cursor-blur"></div>
+
+<!-- NAV -->
+<div id="nav">
+  <nav class="navbar navbar-expand-lg w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="INTRO.html" style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:#22cac7;letter-spacing:2px;">🩺 FindtheDoc</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse" style="border-color:#fff;">
+        <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto me-3">
+          <li class="nav-item"><a class="nav-link" href="#page2">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#page-map">Map</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Patient</a>
+            <ul class="dropdown-menu" style="background:#111;border-color:#333;">
+              <li><a class="dropdown-item" href="#" style="color:#ccc;" onclick="requireLogin('Reports')">Reports</a></li>
+              <li><a class="dropdown-item" href="#" style="color:#ccc;" onclick="requireLogin('Appointments')">My Appointments</a></li>
+              <li><hr class="dropdown-divider" style="border-color:#333;"></li>
+              <li><a class="dropdown-item" href="register.html" style="color:#22cac7;font-weight:700;">Login / Signup</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- User pill -->
+        <div id="userPill" class="me-3">
+          <span id="userNameDisplay"></span>
+          <button id="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        <!-- Search -->
+        <div class="d-flex gap-2">
+          <input class="form-control" type="search" id="siteSearch" placeholder="Search specialty…" style="width:180px;background:#111;color:#fff;border-color:#444;">
+          <button class="btn btn-outline-success" onclick="doSearch()">Search</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- VIDEO HERO -->
+<div id="main">
+  <video src="MAIN/vid.mp4" autoplay loop muted playsinline class="video"></video>
+
+  <div id="page1">
+    <h1>EVERY . LIFE . MATTERS</h1>
+    <h2>"Dedicated to Care, Committed to Cure."</h2>
+    <p>Doctor's commitment to patient care extends beyond prescriptions and procedures, providing emotional support and reassurance that can significantly impact a patient's recovery and well-being. The bond between a doctor and patient is built on trust, empathy, and a shared goal of achieving optimal health outcomes.</p>
+    <div class="hero-btns">
+      <a href="#page-map" class="btn btn-outline-success">Find Doctors Near Me</a>
+      <a href="#page2" class="btn" style="border:1px solid #fff;color:#fff;border-radius:30px;">Explore Services</a>
+    </div>
+  </div>
+
+  <!-- PAGE 2 — ABOUT -->
+  <div id="page2">
+    <div id="scroller">
+      <div id="scroller-in"><h4>Diagnosis</h4><h4>Treatment</h4><h4>Surgery</h4><h4>Care</h4><h4>Diagnosis</h4><h4>Treatment</h4><h4>Surgery</h4><h4>Care</h4></div>
+      <div id="scroller-in"><h4>Diagnosis</h4><h4>Treatment</h4><h4>Surgery</h4><h4>Care</h4><h4>Diagnosis</h4><h4>Treatment</h4><h4>Surgery</h4><h4>Care</h4></div>
+    </div>
+    <br>
+    <center id="aboutus"><h1><b>ABOUT US</b></h1></center>
+    <div id="cards-container">
+      <div class="cards" id="card1" data-name="Ophthalmologist"><div class="overlay"><h4>Ophthalmologist</h4><p>Your vision is our priority, with specialized eye care services that ensure clarity and health.</p></div></div>
+      <div class="cards" id="card2" data-name="Cardiologist"><div class="overlay"><h4>Cardiologist</h4><p>Heart health is at the core of our services, with top cardiologists keeping your heart strong.</p></div></div>
+      <div class="cards" id="card3" data-name="MRI"><div class="overlay"><h4>MRI</h4><p>Advanced MRI services provide detailed imaging to diagnose and treat complex conditions.</p></div></div>
+      <div class="cards" id="card4" data-name="X-Ray"><div class="overlay"><h4>X-Rays</h4><p>Precision matters in diagnostics. Our X-ray services provide accurate insights into your health.</p></div></div>
+      <div class="cards" id="card5" data-name="Orthopedic"><div class="overlay"><h4>Orthopedic Surgeon</h4><p>From fractures to joint pain, our specialists restore your mobility and ease your discomfort.</p></div></div>
+      <div class="cards" id="card6" data-name="OPD"><div class="overlay"><h4>OPD</h4><p>Expert care without extended stays. Quick access to consultations and treatments.</p></div></div>
+      <div class="cards" id="card7" data-name="Dentist"><div class="overlay"><h4>Dentist</h4><p>Top-tier dental care ensuring a healthy smile and confident you.</p></div></div>
+      <div class="cards" id="card8" data-name="General Practitioner"><div class="overlay"><h4>General Practitioner</h4><p>Expert advice is just a click away. Connect with top doctors in various specialties.</p></div></div>
+    </div>
+
+    <!-- PAGE 3 — OVERVIEW -->
+    <div id="page3">
+      <div id="text">
+        <h2>Overview</h2>
+        <p>In this navigation section, users will find a variety of services tailored to meet the healthcare needs of both doctors and patients.</p>
+        <div class="navigation-section">
+          <h2>What Users Can Explore:</h2>
+          <div class="topic"><h3>Doctor Profiles:</h3><ul><li>Access detailed profiles of the best doctors across various specialties.</li><li>View qualifications, experience, and areas of expertise.</li></ul></div>
+          <div class="topic"><h3>Appointment:</h3><ul><li>Easily schedule appointments with your preferred doctors.</li><li>Book, reschedule, or cancel appointments with just a few clicks.</li></ul></div>
+          <div class="topic"><h3>Records:</h3><ul><li>Manage and update your medical history and records securely.</li><li>Doctors can review patient records before appointments.</li></ul></div>
+          <div class="topic"><h3>Consultation:</h3><ul><li>Connect with doctors for in-person or virtual consultations.</li><li>Receive expert advice and treatment plans.</li></ul></div>
+          <div class="topic"><h3>Health:</h3><ul><li>Track your health metrics and follow your treatment progress.</li><li>Doctors can monitor patient data remotely.</li></ul></div>
+        </div>
+      </div>
+      <div id="btns">
+        <div class="bts"><button onclick="requireLogin('Profiles')">Profiles</button></div>
+        <div class="bts"><button onclick="requireLogin('Appointment')">Appointment</button></div>
+        <div class="bts"><button onclick="requireLogin('Reports/Records')">Reports/Records</button></div>
+        <div class="bts"><button onclick="requireLogin('Consultation')">Consultation</button></div>
+        <div class="bts"><button onclick="requireLogin('Health')">Health</button></div>
+      </div>
+    </div>
+
+    <!-- MAP PAGE -->
+    <div id="page-map">
+      <h2>FIND DOCTORS NEAR YOU</h2>
+      <p class="sub">Click "Use My Location" to find hospitals and clinics on the map</p>
+      <div id="map-controls">
+        <select id="specialty-filter">
+          <option value="hospital">Hospital</option>
+          <option value="doctor">General Doctor</option>
+          <option value="dentist">Dentist</option>
+          <option value="physiotherapist">Physiotherapist</option>
+          <option value="pharmacy">Pharmacy</option>
+          <option value="clinic">Clinic</option>
+        </select>
+        <input type="number" id="radius-input" value="5" min="1" max="50" placeholder="Radius (km)" style="width:140px;">
+        <button id="locate-btn" onclick="locateMe()">📍 Use My Location</button>
+      </div>
+      <div id="leaflet-map"></div>
+      <p id="map-status">Press "Use My Location" to search for nearby facilities</p>
+    </div>
+
+    <!-- TEAM -->
+    <div id="page4">
+      <div id="scroller">
+        <div id="scroller-in"><h4>Diagnosis</h4><h4>Treatment</h4><h4>Surgery</h4><h4>Care</h4><h4>Diagnosis</h4><h4>Treatment</h4><h4>Surgery</h4><h4>Care</h4></div>
+        <div id="scroller-in"><h4>Diagnosis</h4><h4>Treatment</h4><h4>Surgery</h4><h4>Care</h4><h4>Diagnosis</h4><h4>Treatment</h4><h4>Surgery</h4><h4>Care</h4></div>
+      </div>
+      <center><h1 style="padding:2rem 0;">About me</h1></center>
+      <div class="card-container">
+        <div class="flip-card">
+          <div class="flip-card-inner2">
+            <div class="flip-card-front2"><p class="title">Reshiv</p><p style="color:white;">RESHIV</p><p style="font-size:0.85rem;opacity:0.8;">2310992271</p></div>
+            <div class="flip-card-back2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#0a0a0a;border-top:1px solid #222;text-align:center;padding:1.5rem;font-size:0.85rem;opacity:0.7;">
+  © 2024 FindtheDoc — Every Life Matters
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="modal fade" id="authModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color:#22cac7;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:1.5rem;">PATIENT PORTAL</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <ul class="nav nav-tabs mb-3">
+          <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#loginTab">Login</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#signupTab">Register</button></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="loginTab">
+            <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" id="loginEmail" placeholder="you@email.com"></div>
+            <div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" id="loginPass" placeholder="••••••••"></div>
+            <button class="btn-teal" onclick="doLogin()">Login</button>
+            <p id="login-msg" class="mt-2"></p>
+          </div>
+          <div class="tab-pane fade" id="signupTab">
+            <div class="row g-2">
+              <div class="col-6"><label class="form-label">Full Name</label><input type="text" class="form-control" id="regName" placeholder="John Doe"></div>
+              <div class="col-6"><label class="form-label">Username</label><input type="text" class="form-control" id="regUser" placeholder="johndoe"></div>
+              <div class="col-6"><label class="form-label">Email</label><input type="email" class="form-control" id="regEmail" placeholder="you@email.com"></div>
+              <div class="col-6"><label class="form-label">Phone</label><input type="tel" class="form-control" id="regPhone" placeholder="+91…"></div>
+              <div class="col-6"><label class="form-label">Password</label><input type="password" class="form-control" id="regPass" placeholder="••••••••"></div>
+              <div class="col-6"><label class="form-label">Confirm Password</label><input type="password" class="form-control" id="regPass2" placeholder="••••••••"></div>
+            </div>
+            <div class="mt-2 mb-3">
+              <label class="form-label">Gender</label>
+              <div class="d-flex gap-3" style="color:#ccc;">
+                <label><input type="radio" name="gender" value="Male"> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+                <label><input type="radio" name="gender" value="Other"> Other</label>
+              </div>
+            </div>
+            <button class="btn-teal" onclick="doRegister()">Register</button>
+            <p id="reg-msg" class="mt-2"></p>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:1rem;font-size:0.85rem;opacity:0.7;">
+          Or <a href="register.html" style="color:#22cac7;">open full register page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
