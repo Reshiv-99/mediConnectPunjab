@@ -1,7 +1,8 @@
 <img width="1831" height="937" alt="image" src="https://github.com/user-attachments/assets/1c410451-b7d3-4dad-8ab1-3033d8b62195" />
+                                                                mediConnect Punjab(FIND THE DOC)
 
 
-                            MediConnect Punjab(FIND THE DOC)
+                           
 
 An interactive, responsive web application designed to connect residents of Punjab with top regional doctors, streamlining medical discovery and real-time appointment scheduling
 ---
